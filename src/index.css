@@ -625,15 +625,149 @@ header {
     text-align: center;
 }
 
-/* Footer */
-footer {
-    background-color: var(--color-text);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
+/* ... existing styles ... */
+
+/* Footer Organic */
+.footer-organic {
+    background-color: transparent;
+    position: relative;
+    margin-top: -100px;
+    /* Pull up to overlap if needed, or just let wave handle it */
+    padding-top: 100px;
 }
 
-/* Responsive */
+.footer-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.footer-wave path {
+    fill: var(--color-text);
+}
+
+.footer-content-wrapper {
+    background-color: var(--color-text);
+    color: white;
+    padding-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Fix container width inheritance in footer wrapper if needed */
+.footer-organic .container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+}
+
+.footer-col h4 {
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.footer-mission {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--color-secondary);
+    transform: translateX(5px);
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact a:hover {
+    color: var(--color-secondary);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.back-to-top {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: var(--color-secondary);
+    color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Sales FAB & Modal Styles */
+/* ... existing styles ... */
 @media (max-width: 768px) {
 
     .hero-content,
