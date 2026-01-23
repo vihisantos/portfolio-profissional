@@ -1,43 +1,63 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
     const location = useLocation();
     const navigate = useNavigate();
 
     const navLinks = [
-        { name: 'Início', href: '#hero', type: 'anchor' },
-        { name: 'Sobre', href: '#about', type: 'anchor' },
-        { name: 'Serviços', href: '#services', type: 'anchor' },
-        { name: 'Depoimentos', href: '#testimonials', type: 'anchor' },
-        { name: 'Contato', href: '#contact', type: 'anchor' },
+        { name: 'Início', href: '#hero', id: 'hero' },
+        { name: 'Sobre', href: '#about', id: 'about' },
+        { name: 'Serviços', href: '#services', id: 'services' },
+        { name: 'Depoimentos', href: '#testimonials', id: 'testimonials' },
+        { name: 'Contato', href: '#contact', id: 'contact' },
     ];
 
-    const handleNavClick = (e, href) => {
+    // Scroll Spy Logic
+    useEffect(() => {
+        if (location.pathname !== '/') {
+            if (location.pathname === '/sobre') setActiveSection('about');
+            return;
+        }
+
+        const handleScroll = () => {
+            const sections = navLinks.map(link => document.getElementById(link.id));
+            const scrollPosition = window.scrollY + 100; // Offset for header
+
+            // Default to hero/home
+            let current = 'hero';
+
+            sections.forEach(section => {
+                if (section && section.offsetTop <= scrollPosition) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            setActiveSection(current);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [location.pathname]);
+
+    const handleNavClick = (e, href, id) => {
         e.preventDefault();
         setIsOpen(false);
+        setActiveSection(id);
 
-        // If it's a section link
         if (href.startsWith('#')) {
             const sectionId = href.substring(1);
-
-            // If we are NOT on home page, go home first, then scroll
             if (location.pathname !== '/') {
                 navigate('/');
-                // Small timeout to allow Home to mount
                 setTimeout(() => {
                     const section = document.getElementById(sectionId);
-                    if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    if (section) section.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
             } else {
-                // Already on home, just scroll
                 const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (section) section.scrollIntoView({ behavior: 'smooth' });
             }
         }
     };
@@ -56,8 +76,8 @@ export default function Header() {
                             <li key={link.name}>
                                 <a
                                     href={link.href}
-                                    onClick={(e) => handleNavClick(e, link.href)}
-                                    className="nav-link"
+                                    onClick={(e) => handleNavClick(e, link.href, link.id)}
+                                    className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
                                 >
                                     {link.name}
                                 </a>
@@ -66,7 +86,7 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                {/* Mobile Toggle */}
+                {/* Mobile Toggle & Nav (omitted for brevity, assume similar update or reuse) */}
                 <button
                     className="mobile-toggle"
                     onClick={() => setIsOpen(!isOpen)}
@@ -76,14 +96,14 @@ export default function Header() {
                     {isOpen ? '✕' : '☰'}
                 </button>
 
-                {/* Mobile Nav */}
                 {isOpen && (
                     <nav className="mobile-menu">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                onClick={(e) => handleNavClick(e, link.href)}
+                                onClick={(e) => handleNavClick(e, link.href, link.id)}
+                                className={activeSection === link.id ? 'active' : ''}
                             >
                                 {link.name}
                             </a>

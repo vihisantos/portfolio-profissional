@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from './components/Header';
 import Protection from './components/Protection';
@@ -25,15 +25,39 @@ function ScrollToTop() {
     return null;
 }
 
+// Wrapper for page transitions
+function AnimatedPage({ children }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+            {children}
+        </motion.div>
+    );
+}
+
 function HomePage() {
     return (
-        <main>
-            <Hero />
-            <About />
-            <Services />
-            <Testimonials />
-            <ContactForm />
-        </main>
+        <AnimatedPage>
+            <main>
+                <Hero />
+                <section id="about"><About /></section>
+                <section id="services"><Services /></section>
+                <section id="testimonials"><Testimonials /></section>
+                <section id="contact"><ContactForm /></section>
+            </main>
+        </AnimatedPage>
+    );
+}
+
+function AboutWrapper() {
+    return (
+        <AnimatedPage>
+            <AboutPage />
+        </AnimatedPage>
     );
 }
 
@@ -52,14 +76,24 @@ function Layout({ children }) {
     );
 }
 
+function AnimatedRoutes() {
+    const location = useLocation();
+
+    return (
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/sobre" element={<AboutWrapper />} />
+            </Routes>
+        </AnimatePresence>
+    );
+}
+
 function App() {
     return (
         <Router>
             <Layout>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/sobre" element={<AboutPage />} />
-                </Routes>
+                <AnimatedRoutes />
             </Layout>
         </Router>
     );
