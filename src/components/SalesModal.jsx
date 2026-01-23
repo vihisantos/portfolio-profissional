@@ -5,7 +5,7 @@ const SalesModal = () => {
 
     const toggleModal = () => setIsOpen(!isOpen);
 
-    const whatsappLink = "https://wa.me/554896238388?text=Olá!%20Vi%20o%20modelo%20de%20portfolio%20e%20quero%20um%20igual%20para%20mim!";
+    const whatsappLink = "https://wa.me/5511937507066?text=Olá!%20Vi%20o%20modelo%20de%20portfolio%20e%20quero%20um%20igual%20para%20mim!";
 
     return (
         <>
