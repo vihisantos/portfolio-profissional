@@ -628,30 +628,27 @@ header {
 /* ... existing styles ... */
 
 /* Footer Organic */
+/* Footer Organic */
 .footer-organic {
     background-color: transparent;
     position: relative;
-    margin-top: -100px;
-    /* Pull up to overlap if needed, or just let wave handle it */
-    padding-top: 100px;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 .footer-wave {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg);
+    margin-bottom: -1px;
+    /* Prevent subpixel gap */
 }
 
 .footer-wave svg {
-    position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 150px;
-    transform: rotateY(180deg);
 }
 
 /* ... existing styles ... */
