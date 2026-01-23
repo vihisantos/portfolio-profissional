@@ -1,29 +1,66 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 export default function Header() {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const navLinks = [
-        { name: 'Início', href: '#hero' },
-        { name: 'Sobre', href: '#about' },
-        { name: 'Serviços', href: '#services' },
-        { name: 'Depoimentos', href: '#testimonials' },
-        { name: 'Contato', href: '#contact' },
-    ]
+        { name: 'Início', href: '#hero', type: 'anchor' },
+        { name: 'Sobre', href: '#about', type: 'anchor' },
+        { name: 'Serviços', href: '#services', type: 'anchor' },
+        { name: 'Depoimentos', href: '#testimonials', type: 'anchor' },
+        { name: 'Contato', href: '#contact', type: 'anchor' },
+    ];
+
+    const handleNavClick = (e, href) => {
+        e.preventDefault();
+        setIsOpen(false);
+
+        // If it's a section link
+        if (href.startsWith('#')) {
+            const sectionId = href.substring(1);
+
+            // If we are NOT on home page, go home first, then scroll
+            if (location.pathname !== '/') {
+                navigate('/');
+                // Small timeout to allow Home to mount
+                setTimeout(() => {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            } else {
+                // Already on home, just scroll
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    };
 
     return (
         <header>
             <div className="container header-inner">
-                <a href="#" className="logo" aria-label="Voltar ao início">
+                <Link to="/" className="logo" aria-label="Voltar ao início" onClick={() => window.scrollTo(0, 0)}>
                     Dra. Ana Silva
-                </a>
+                </Link>
 
                 {/* Desktop Nav */}
                 <nav className="nav-desktop" aria-label="Menu principal">
                     <ul>
                         {navLinks.map((link) => (
                             <li key={link.name}>
-                                <a href={link.href}>{link.name}</a>
+                                <a
+                                    href={link.href}
+                                    onClick={(e) => handleNavClick(e, link.href)}
+                                    className="nav-link"
+                                >
+                                    {link.name}
+                                </a>
                             </li>
                         ))}
                     </ul>
@@ -46,7 +83,7 @@ export default function Header() {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                onClick={() => setIsOpen(false)}
+                                onClick={(e) => handleNavClick(e, link.href)}
                             >
                                 {link.name}
                             </a>
@@ -55,5 +92,5 @@ export default function Header() {
                 )}
             </div>
         </header>
-    )
+    );
 }
