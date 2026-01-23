@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -29,9 +30,9 @@ const Hero = () => {
                         <a href="https://wa.me/5511937507066" className="btn btn-primary btn-lg">
                             Agendar Consulta
                         </a>
-                        <a href="#sobre" className="btn btn-secondary btn-lg">
+                        <Link to="/sobre" className="btn btn-secondary btn-lg">
                             Conhecer a Profissional
-                        </a>
+                        </Link>
                     </motion.div>
                 </motion.div>
 
