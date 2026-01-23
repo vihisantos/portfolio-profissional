@@ -1,36 +1,49 @@
+import AnimatedSection from './AnimatedSection';
+
 export default function Testimonials() {
     const testimonials = [
         {
-            text: "A Dra. Ana me ajudou a passar pelo momento mais difícil da minha vida com uma sensibilidade incrível. Sinto-me muito mais forte hoje.",
-            name: "Mariana C."
+            name: "Maria Oliveira",
+            text: "A terapia mudou minha vida. A Dra. Ana é extremamente acolhedora e profissional.",
+            initial: "M"
         },
         {
-            text: "Excelente profissional. As sessões online funcionam perfeitamente para minha rotina e a qualidade é impecável.",
-            name: "Roberto S."
+            name: "João Silva",
+            text: "Consegui superar minha ansiedade graças às sessões. Recomendo a todos!",
+            initial: "J"
         },
         {
-            text: "A abordagem prática me ajudou a entender meus gatilhos de ansiedade. Recomendo de olhos fechados!",
-            name: "Carla M."
+            name: "Fernanda Costa",
+            text: "O atendimento online funciona perfeitamente. Sinto-me segura e ouvida em cada sessão.",
+            initial: "F"
         }
-    ]
+    ];
 
     return (
         <section id="testimonials" className="section testimonials">
             <div className="container">
-                <div className="section-title">
-                    <p style={{ color: 'rgba(255,255,255,0.8)' }}>Depoimentos</p>
-                    <h2>O que dizem os pacientes</h2>
-                </div>
+                <AnimatedSection>
+                    <div className="section-title">
+                        <p style={{ color: 'rgba(255,255,255,0.8)' }}>Depoimentos</p>
+                        <h2 style={{ color: 'white' }}>O que dizem meus pacientes</h2>
+                    </div>
+                </AnimatedSection>
 
                 <div className="testimonials-grid">
                     {testimonials.map((t, index) => (
-                        <div className="testimonial-card" key={index}>
-                            <p style={{ fontStyle: 'italic', fontSize: '1.1rem' }}>"{t.text}"</p>
-                            <p className="client-name">- {t.name}</p>
-                        </div>
+                        <AnimatedSection key={index} delay={index * 0.2}>
+                            <div className="testimonial-card glass-card">
+                                <div className="quote-icon">"</div>
+                                <p className="testimonial-text">{t.text}</p>
+                                <div className="testimonial-author">
+                                    <div className="author-avatar">{t.initial}</div>
+                                    <p className="client-name">{t.name}</p>
+                                </div>
+                            </div>
+                        </AnimatedSection>
                     ))}
                 </div>
             </div>
         </section>
-    )
+    );
 }

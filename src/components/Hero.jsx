@@ -1,33 +1,58 @@
-export default function Hero() {
+import { motion } from 'framer-motion';
+
+const Hero = () => {
     return (
-        <section id="hero" className="hero">
-            <div className="container hero-content">
-                <div className="hero-text">
-                    <h1>Caminhe em direção ao seu bem-estar</h1>
+        <section id="inicio" className="hero-organic">
+            <div className="container hero-container">
+                {/* Text Content - Occupies more space for asymmetry */}
+                <motion.div
+                    className="hero-text-content"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }} // Soft spring
+                >
+                    <span className="hero-badge">Psicologia Clínica & Terapia Cognitivo-Comportamental</span>
+                    <h1>
+                        Reencontre seu <span className="highlight-text">bem-estar</span> emocional.
+                    </h1>
                     <p>
-                        Psicoterapia acolhedora e baseada em evidências.
-                        Redescubra sua força interior e construa uma vida mais leve e significativa.
+                        Um espaço seguro e acolhedor para sua jornada de autoconhecimento.
+                        Atendimento especializado online e presencial para transformar sua qualidade de vida.
                     </p>
-                    <a href="#contact" className="btn btn-primary">
-                        Agendar Consulta
-                    </a>
-                </div>
-                <div className="hero-image">
-                    {/* Placeholder for professional photo */}
-                    <div className="blob">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#F7B267" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.4C93.5,8.4,82.2,21.1,70.8,31C59.4,40.9,47.9,48,36.5,52.2C25.1,56.4,13.8,57.7,1.3,55.5C-11.2,53.3,-24.9,47.6,-36.4,40.6C-47.9,33.6,-57.2,25.3,-65.4,14.6C-73.6,3.9,-80.7,-9.2,-78.9,-21.8C-77.1,-34.4,-66.4,-46.5,-54.2,-54.3C-42,-62.1,-28.3,-65.6,-14.8,-67C-1.3,-68.4,12.2,-67.7,30.5,-83.6" transform="translate(100 100)" />
-                        </svg>
+                    <br />
+                    <motion.div
+                        className="hero-actions"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, duration: 0.8 }}
+                    >
+                        <a href="https://wa.me/5511937507066" className="btn btn-primary btn-lg">
+                            Agendar Consulta
+                        </a>
+                        <a href="#sobre" className="btn btn-secondary btn-lg">
+                            Conhecer a Profissional
+                        </a>
+                    </motion.div>
+                </motion.div>
+
+                {/* Visual Content - Organic Mask */}
+                <motion.div
+                    className="hero-visual"
+                    initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                >
+                    <div className="image-blob-mask">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Psicóloga acolhedora" />
                     </div>
-                    <img
-                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Foto profissional da Dra. Ana Silva sorrindo"
-                        width="500"
-                        height="500"
-                        loading="eager"
-                    />
-                </div>
+                </motion.div>
             </div>
+
+            {/* Background Blob Elements */}
+            <div className="bg-blob blob-1"></div>
+            <div className="bg-blob blob-2"></div>
         </section>
-    )
-}
+    );
+};
+
+export default Hero;
