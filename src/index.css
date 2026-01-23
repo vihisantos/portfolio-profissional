@@ -451,3 +451,187 @@ footer {
         display: flex;
     }
 }
+
+/* Sales FAB & Modal Styles */
+.sales-fab {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    /* Left side to balance WhatsApp on right */
+    z-index: 9998;
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    /* Gold Gradient */
+    color: #2c3e50;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    animation: pulse-gold 2s infinite;
+}
+
+.sales-fab:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(218, 165, 32, 0.6);
+}
+
+.sales-fab-icon {
+    background: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+@keyframes pulse-gold {
+    0% {
+        box-shadow: 0 0 0 0 rgba(218, 165, 32, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(218, 165, 32, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(218, 165, 32, 0);
+    }
+}
+
+/* Modal Overlay */
+.sales-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Modal Content */
+.sales-modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    border: 2px solid #DAA520;
+}
+
+.sales-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sales-modal-close:hover {
+    color: #333;
+}
+
+.sales-modal-header h2 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+}
+
+.sales-subtitle {
+    color: #DAA520;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sales-modal-body {
+    margin: 25px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.sales-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sales-list li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.sales-cta-button {
+    display: inline-block;
+    background: #25D366;
+    /* WhatsApp Green */
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.sales-cta-button:hover {
+    background: #128C7E;
+    transform: scale(1.05);
+}
+
+.sales-note {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

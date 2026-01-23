@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import Protection from './components/Protection'
+import SalesModal from './components/SalesModal'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
@@ -12,6 +13,7 @@ function App() {
     return (
         <div className="app-container">
             <Protection />
+            <SalesModal />
             <Header />
             <main>
                 <Hero />
