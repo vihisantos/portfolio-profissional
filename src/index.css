@@ -654,16 +654,20 @@ header {
     transform: rotateY(180deg);
 }
 
+/* ... existing styles ... */
+
 .footer-wave path {
     fill: var(--color-text);
 }
 
-.footer-content-wrapper {
+.footer-bg-wrapper {
     background-color: var(--color-text);
     color: white;
     padding-bottom: 3rem;
     position: relative;
     z-index: 2;
+    width: 100%;
+    /* Ensure full width */
 }
 
 /* Fix container width inheritance in footer wrapper if needed */
@@ -672,6 +676,8 @@ header {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+/* ... existing styles ... */
 
 .footer-grid {
     display: grid;
