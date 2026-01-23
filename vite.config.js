@@ -9,8 +9,8 @@ export default defineConfig({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
+        // drop_console: true, // DEBUG: Enabled for troubleshooting
+        // drop_debugger: true,
       },
       format: {
         comments: false,
