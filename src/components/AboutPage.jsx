@@ -2,14 +2,46 @@ import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 
 export default function AboutPage() {
+    // Stagger container for list items
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: { opacity: 1, x: 0 }
+    };
+
     return (
         <div className="about-page">
             <div className="container">
                 {/* Header Section */}
                 <AnimatedSection>
                     <div className="about-hero">
-                        <span className="hero-badge">Minha Jornada</span>
-                        <h1>Quem é a <span className="highlight-text">Dra. Ana Silva?</span></h1>
+                        <motion.span
+                            className="hero-badge"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            Minha Jornada
+                        </motion.span>
+                        <h1>
+                            Quem é a <span className="highlight-text-anim">Dra. Ana Silva?
+                                <motion.span
+                                    className="highlight-mark"
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: '100%' }}
+                                    transition={{ delay: 0.5, duration: 0.8, ease: "circOut" }}
+                                />
+                            </span>
+                        </h1>
                         <p className="lead-text">
                             Psicóloga, pesquisadora e apaixonada pelo potencial humano de transformação.
                         </p>
@@ -21,12 +53,23 @@ export default function AboutPage() {
                     {/* Visual Column */}
                     <div className="about-visual-col">
                         <AnimatedSection delay={0.2}>
-                            <div className="image-blob-mask big-mask">
+                            <motion.div
+                                className="image-blob-mask big-mask"
+                                animate={{
+                                    y: [0, -15, 0],
+                                    rotate: [0, 1, 0, -1, 0]
+                                }}
+                                transition={{
+                                    duration: 6,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            >
                                 <img
                                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                     alt="Dra. Ana Silva"
                                 />
-                            </div>
+                            </motion.div>
                         </AnimatedSection>
                     </div>
 
@@ -45,19 +88,37 @@ export default function AboutPage() {
                                 sou uma parceira ativa na sua jornada de descoberta e mudança.
                             </p>
 
-                            <div className="credentials-box organic-card">
+                            <motion.div
+                                className="credentials-box organic-card"
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                            >
                                 <h3>Formação e Credenciais</h3>
                                 <ul>
-                                    <li>🎓 Graduação em Psicologia - USP</li>
-                                    <li>📚 Especialista em TCC - PUC-RS</li>
-                                    <li>🧠 Curso de Neurociência Aplicada</li>
-                                    <li>📝 CRP Ativo: 12/34567</li>
+                                    {[
+                                        "🎓 Graduação em Psicologia - USP",
+                                        "📚 Especialista em TCC - PUC-RS",
+                                        "🧠 Curso de Neurociência Aplicada",
+                                        "📝 CRP Ativo: 12/34567"
+                                    ].map((item, index) => (
+                                        <motion.li key={index} variants={itemVariants}>
+                                            {item}
+                                        </motion.li>
+                                    ))}
                                 </ul>
-                            </div>
+                            </motion.div>
 
-                            <a href="https://wa.me/5511937507066" className="btn btn-primary btn-lg" style={{ marginTop: '2rem' }}>
+                            <motion.a
+                                href="https://wa.me/5511937507066"
+                                className="btn btn-primary btn-lg"
+                                style={{ marginTop: '2rem' }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
                                 Agendar Minha Sessão
-                            </a>
+                            </motion.a>
                         </AnimatedSection>
                     </div>
                 </div>
