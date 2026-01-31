@@ -16,6 +16,21 @@ export default function Testimonials() {
             name: "Fernanda Costa",
             text: "O atendimento online funciona perfeitamente. Sinto-me segura e ouvida em cada sessão.",
             initial: "F"
+        },
+        {
+            name: "Ricardo Mendonça",
+            text: "Ambiente excelente e atendimento pontual. Senti uma melhora logo nas primeiras sessões.",
+            initial: "R"
+        },
+        {
+            name: "Carlos Mendes",
+            text: "O acompanhamento terapêutico me ajudou a tomar decisões importantes na carreira. Excelente!",
+            initial: "C"
+        },
+        {
+            name: "Juliana Rocha",
+            text: "Dra. Ana é extremamente sensível e técnica. Me sinto muito segura no processo.",
+            initial: "J"
         }
     ];
 
@@ -31,7 +46,11 @@ export default function Testimonials() {
 
                 <div className="testimonials-grid">
                     {testimonials.map((t, index) => (
-                        <AnimatedSection key={index} delay={index * 0.2}>
+                        <AnimatedSection
+                            key={index}
+                            delay={index * 0.2}
+                            className={index >= 4 ? 'desktop-only-testimonial' : ''}
+                        >
                             <div className="testimonial-card glass-card">
                                 <div className="quote-icon">"</div>
                                 <p className="testimonial-text">{t.text}</p>

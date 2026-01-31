@@ -33,6 +33,30 @@ export default function Services() {
             )
         },
         {
+            title: "Psicoterapia Infantil",
+            description: "Acolhimento preventivo e tratamento de questões emocionais e comportamentais através do lúdico.",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                    <path d="M9 10l.01 0"></path>
+                    <path d="M15 10l.01 0"></path>
+                    <path d="M9.5 15a3.5 3.5 0 0 0 5 0"></path>
+                </svg>
+            )
+        },
+        {
+            title: "Terapia para Adolescentes",
+            description: "Suporte especializado para os desafios da transição, auxiliando na identidade e inteligência emocional.",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            )
+        },
+        {
             title: "Orientação Profissional",
             description: "Suporte para escolhas de carreira, transição profissional e testes vocacionais.",
             icon: (

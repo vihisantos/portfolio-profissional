@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -86,7 +87,7 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                {/* Mobile Toggle & Nav (omitted for brevity, assume similar update or reuse) */}
+                {/* Mobile Toggle */}
                 <button
                     className="mobile-toggle"
                     onClick={() => setIsOpen(!isOpen)}
@@ -96,20 +97,28 @@ export default function Header() {
                     {isOpen ? '✕' : '☰'}
                 </button>
 
-                {isOpen && (
-                    <nav className="mobile-menu">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={(e) => handleNavClick(e, link.href, link.id)}
-                                className={activeSection === link.id ? 'active' : ''}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                    </nav>
-                )}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.nav
+                            className="mobile-menu"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        >
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={(e) => handleNavClick(e, link.href, link.id)}
+                                    className={activeSection === link.id ? 'active' : ''}
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </motion.nav>
+                    )}
+                </AnimatePresence>
             </div>
         </header>
     );
