@@ -66,7 +66,7 @@ export default function AboutPage() {
                                 }}
                             >
                                 <img
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    src="/portfolio-profissional/psicologa.png"
                                     alt="Dra. Ana Silva"
                                 />
                             </motion.div>

@@ -44,7 +44,7 @@ const Hero = () => {
                     transition={{ duration: 1.2, ease: "easeOut" }}
                 >
                     <div className="image-blob-mask">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Psicóloga acolhedora" />
+                        <img src="/portfolio-profissional/psicologa.png" alt="Psicóloga acolhedora" />
                     </div>
                 </motion.div>
             </div>
