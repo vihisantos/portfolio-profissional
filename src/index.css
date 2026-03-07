@@ -1019,7 +1019,7 @@ header {
     }
 
     .big-mask {
-        height: 400px;
+        height: 280px; /* Reduzido de 400px para não dominar a tela toda */
     }
 
     /* Testimonials & Services */
@@ -1101,6 +1101,27 @@ header {
 
     .desktop-only-testimonial {
         display: none !important;
+    }
+
+    /* Redução dos botões flutuantes FABs no mobile para evitar sobreposição nos textos */
+    .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .sales-fab {
+        bottom: 1rem;
+        left: 1rem;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .sales-fab-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
     }
 }
 
