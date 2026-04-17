@@ -12,6 +12,7 @@ import Services from './components/Services';
 import Certificates from './components/Certificates';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
+import Newsletter from './components/Newsletter';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -53,6 +54,7 @@ function HomePage() {
                 <section id="certificates"><Certificates /></section>
                 <section id="pricing"><Pricing /></section>
                 <section id="faq"><FAQ /></section>
+                <Newsletter />
                 <section id="contact"><ContactForm /></section>
             </main>
         </AnimatedPage>
