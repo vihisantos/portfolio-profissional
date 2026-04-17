@@ -1506,48 +1506,40 @@ header.scrolled {
     bottom: 2rem;
     left: 2rem;
     z-index: 9998;
-    background: linear-gradient(135deg, #C9A87C 0%, #B8956A 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: var(--radius-full);
     padding: 14px 24px;
-    font-weight: 700;
+    font-weight: 600;
     font-family: var(--font-body);
-    box-shadow: 0 4px 20px rgba(201, 168, 124, 0.4);
+    box-shadow: 0 4px 25px rgba(44, 95, 95, 0.35);
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     transition: var(--transition);
-    animation: pulse-gold 2s infinite;
 }
 
 .sales-fab:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(201, 168, 124, 0.5);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 35px rgba(44, 95, 95, 0.45);
 }
 
 .sales-fab-icon {
-    background: white;
-    width: 28px;
-    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-primary);
-    font-size: 1rem;
-    font-weight: 900;
+    color: white;
 }
 
 .sales-fab-text {
-    font-size: 0.95rem;
-}
-
-@keyframes pulse-gold {
-    0% { box-shadow: 0 0 0 0 rgba(201, 168, 124, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(201, 168, 124, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(201, 168, 124, 0); }
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
 }
 
 .sales-modal-overlay {
@@ -1556,120 +1548,212 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    animation: fadeIn 0.3s ease-out;
+    padding: 24px;
 }
 
 .sales-modal-content {
     background: var(--color-surface);
     width: 100%;
-    max-width: 500px;
+    max-width: 560px;
     border-radius: var(--radius-lg);
-    padding: 2.5rem;
+    padding: 3rem;
     position: relative;
-    box-shadow: var(--shadow-lg);
-    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
     text-align: center;
-    border: 2px solid var(--color-secondary);
+    overflow: hidden;
+}
+
+.sales-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+    background-size: 200% 100%;
+    animation: gradientSlide 3s ease infinite;
+}
+
+@keyframes gradientSlide {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .sales-modal-close {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 20px;
-    background: none;
-    border: none;
-    font-size: 2rem;
+    background: var(--color-bg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--color-text-muted);
     cursor: pointer;
     transition: var(--transition-fast);
-    line-height: 1;
 }
 
 .sales-modal-close:hover {
+    background: var(--color-bg-warm);
     color: var(--color-text);
 }
 
-.sales-modal-header h2 {
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-    font-size: 1.75rem;
+.sales-modal-header {
+    margin-bottom: 2.5rem;
 }
 
-.sales-subtitle {
-    color: var(--color-secondary);
-    font-weight: 600;
-    font-size: 1rem;
+.sales-modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-accent);
+    color: var(--color-primary-dark);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
 }
 
-.sales-modal-body {
-    margin: 1.5rem 0;
+.sales-modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-text);
+    line-height: 1.35;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.sales-modal-subtitle {
     color: var(--color-text-light);
+    font-size: 1.05rem;
     line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
 }
 
-.sales-modal-body strong {
+.sales-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.sales-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+}
+
+.sales-feature-item:hover {
+    background: var(--color-bg-warm);
+    transform: translateX(4px);
+}
+
+.sales-feature-check {
+    width: 28px;
+    height: 28px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.sales-feature-text {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.sales-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: 0 auto 2rem;
+    border-radius: 2px;
+}
+
+.sales-targets {
+    margin-bottom: 2.5rem;
+}
+
+.sales-targets-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.sales-targets-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sales-targets-tags span {
+    background: var(--color-bg-warm);
+    color: var(--color-text);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.sales-targets-tags span:hover {
+    border-color: var(--color-primary);
     color: var(--color-primary);
 }
 
-.sales-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-    text-align: left;
-    background: var(--color-bg-warm);
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-}
-
-.sales-list li {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    color: var(--color-text);
-}
-
-.sales-list li:last-child {
-    margin-bottom: 0;
-}
-
-.sales-pitch {
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    color: var(--color-text);
-}
-
-.sales-modal-footer {
-    margin-top: 1.5rem;
-}
-
 .sales-cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     text-decoration: none;
-    padding: 16px 32px;
+    padding: 18px 36px;
     border-radius: var(--radius-full);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     transition: var(--transition);
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 25px rgba(37, 211, 102, 0.35);
+    margin-bottom: 1.25rem;
 }
 
 .sales-cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.45);
 }
 
 .sales-note {
-    margin-top: 0.75rem;
     font-size: 0.85rem;
     color: var(--color-text-muted);
 }
@@ -1686,10 +1770,9 @@ header.scrolled {
 
 @media (max-width: 768px) {
     .sales-fab {
-        bottom: 1.5rem;
+        bottom: 5.5rem;
         left: 1rem;
-        padding: 12px 18px;
-        font-size: 0.85rem;
+        padding: 14px 20px;
     }
     
     .sales-fab-text {
@@ -1697,6 +1780,19 @@ header.scrolled {
     }
     
     .sales-modal-content {
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.75rem;
+    }
+    
+    .sales-features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .sales-feature-item {
+        padding: 14px 16px;
+    }
+    
+    .sales-modal-title {
+        font-size: 1.5rem;
     }
 }
