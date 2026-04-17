@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import Protection from './components/Protection';
 import SalesModal from './components/SalesModal';
+import ThemeToggle from './components/ThemeToggle';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
@@ -80,6 +81,7 @@ function Layout({ children }) {
         <div className="app-container">
             <Protection />
             <SalesModal />
+            <ThemeToggle />
             <ScrollToTop />
             <Header />
             {children}
