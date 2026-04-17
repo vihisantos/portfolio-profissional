@@ -8,6 +8,7 @@ import SalesModal from './components/SalesModal';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import FAQ from './components/FAQ';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -46,6 +47,7 @@ function HomePage() {
                 <Hero />
                 <section id="about"><About /></section>
                 <section id="services"><Services /></section>
+                <section id="faq"><FAQ /></section>
                 <section id="contact"><ContactForm /></section>
             </main>
         </AnimatedPage>
