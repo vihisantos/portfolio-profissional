@@ -12,6 +12,7 @@ export default function Header() {
         { name: 'Início', href: '#hero', id: 'hero' },
         { name: 'Sobre', href: '#about', id: 'about' },
         { name: 'Serviços', href: '#services', id: 'services' },
+        { name: 'Valores', href: '#pricing', id: 'pricing' },
         { name: 'FAQ', href: '#faq', id: 'faq' },
         { name: 'Depoimentos', href: '#testimonials', id: 'testimonials' },
         { name: 'Contato', href: '#contact', id: 'contact' },
