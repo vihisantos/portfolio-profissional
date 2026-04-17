@@ -67,7 +67,7 @@ export default function Header() {
         <header>
             <div className="container header-inner">
                 <Link to="/" className="logo" aria-label="Voltar ao início" onClick={() => window.scrollTo(0, 0)}>
-                    Dra. Ana Silva
+                    Dra. Ana <span className="logo-accent">Silva</span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -84,6 +84,11 @@ export default function Header() {
                                 </a>
                             </li>
                         ))}
+                        <li>
+                            <a href="https://wa.me/5511937507066" className="btn btn-primary nav-cta">
+                                Agendar Consulta
+                            </a>
+                        </li>
                     </ul>
                 </nav>
 

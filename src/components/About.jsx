@@ -6,60 +6,80 @@ export default function About() {
             <div className="container">
                 <AnimatedSection>
                     <div className="section-title">
-                        <p>Conheça a Profissional</p>
-                        <h2>Sobre Mim</h2>
+                        <span className="section-label">Conheça</span>
+                        <h2>Sobre a Profissional</h2>
                     </div>
                 </AnimatedSection>
 
                 <div className="about-grid">
-                    {/* Visual Side - Staggered Left */}
                     <AnimatedSection delay={0.2}>
-                        <div className="about-image organic-image-container">
-                            <img
-                                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Consultório acolhedor com poltronas confortáveis"
-                                className="organic-rounded"
-                                loading="lazy"
-                            />
-                            {/* Decorative organic element */}
-                            <div className="organic-deco"></div>
+                        <div className="about-image-container">
+                            <div className="about-image-wrapper">
+                                <img
+                                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Consultório acolhedor"
+                                    className="about-image"
+                                    loading="lazy"
+                                />
+                            </div>
+                            <div className="about-badge">
+                                <div className="about-badge-number">+10</div>
+                                <div className="about-badge-text">Anos de experiência</div>
+                            </div>
                         </div>
                     </AnimatedSection>
 
-                    {/* Text Side - Staggered Right */}
                     <AnimatedSection delay={0.4}>
-                        <div className="about-text">
-                            <h3>Dra. Ana Silva - CRP 12/34567</h3>
+                        <div className="about-content">
+                            <h3>Dra. Ana Silva</h3>
+                            <p className="about-crp">CRP 12/34567</p>
+                            
                             <div className="about-description">
                                 <p>
-                                    Com mais de 10 anos de experiência clínica, dedico minha carreira a auxiliar
-                                    pessoas a encontrarem equilíbrio emocional e autoconhecimento.
+                                    Com mais de uma década de experiência clínica, dedico minha carreira a auxiliar 
+                                    pessoas a encontrarem equilíbrio emocional e autoconhecimento através de um 
+                                    acompanhamento terapêutico humanizado e baseado em evidências.
                                 </p>
                                 <p>
-                                    Minha abordagem é baseada na <strong>Terapia Cognitivo-Comportamental (TCC)</strong>,
-                                    focada em resultados práticos e na mudança de padrões de pensamento que geram sofrimento.
+                                    Minha abordagem é fundamentada na <strong>Terapia Cognitivo-Comportamental (TCC)</strong>, 
+                                    uma abordagem cientificamente validada que oferece ferramentas práticas para 
+                                    identificar e modificar padrões de pensamento disfuncionais.
                                 </p>
                                 <p>
-                                    Acredito que a terapia é um espaço sagrado de escuta sem julgamentos,
-                                    onde cada indivíduo pode se sentir seguro para ser quem realmente é.
+                                    Acredito que cada pessoa carrega em si recursos únicos para superar desafios. 
+                                    Meu papel é facilitar esse processo de descoberta e transformação.
                                 </p>
                             </div>
 
                             <ul className="about-list">
-                                <li>
-                                    <span className="check-icon">✓</span> Especialista em Ansiedade e Depressão
+                                <li className="about-list-item">
+                                    <span className="check-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    Especialista em Ansiedade, Depressão e Burnout
                                 </li>
-                                <li>
-                                    <span className="check-icon">✓</span> Pós-graduada em TCC pela USP
+                                <li className="about-list-item">
+                                    <span className="check-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    Pós-graduada em TCC pela USP
                                 </li>
-                                <li>
-                                    <span className="check-icon">✓</span> Atendimento Humanizado e Acolhedor
+                                <li className="about-list-item">
+                                    <span className="check-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    Atendimento Online e Presencial
+                                </li>
+                                <li className="about-list-item">
+                                    <span className="check-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    Sigilo e Ética Profissional Garantidos
                                 </li>
                             </ul>
 
-                            <br />
-                            <a href="#contact" className="btn btn-secondary">
-                                Agendar Conversa
+                            <a href="#contact" className="btn btn-primary">
+                                Agendar Conversa Inicial
                             </a>
                         </div>
                     </AnimatedSection>
