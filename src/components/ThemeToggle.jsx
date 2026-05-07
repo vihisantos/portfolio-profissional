@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackThemeChange } from '../lib/analytics';
 
 export default function ThemeToggle() {
     const [isDark, setIsDark] = useState(false);
@@ -19,6 +20,7 @@ export default function ThemeToggle() {
         setIsDark(newTheme);
         localStorage.setItem('theme', newTheme ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', newTheme ? 'dark' : 'light');
+        trackThemeChange(newTheme ? 'dark' : 'light');
     };
 
     if (!mounted) return null;

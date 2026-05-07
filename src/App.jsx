@@ -18,6 +18,17 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import AboutPage from './components/AboutPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import { trackPageView } from './lib/analytics';
+
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location]);
+
+  return null;
+}
 
 // ScrollToTop component to handle scroll position on route change
 function ScrollToTop() {
@@ -111,6 +122,7 @@ function App() {
     return (
         <Router>
             <Layout>
+                <AnalyticsTracker />
                 <AnimatedRoutes />
             </Layout>
         </Router>

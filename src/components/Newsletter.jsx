@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
-
+import { trackNewsletter } from '../lib/analytics';
+ 
 export default function Newsletter() {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState(null);
@@ -21,6 +22,7 @@ export default function Newsletter() {
             setLoading(false);
             setStatus('success');
             setEmail('');
+            trackNewsletter(true, true);
             setTimeout(() => setStatus(null), 5000);
         }, 1000);
     };

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { trackWhatsAppClick } from '../lib/analytics';
 
 const Hero = () => {
     return (
@@ -48,7 +49,7 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
                     >
-                        <a href="https://wa.me/5511937507066" className="btn btn-primary btn-lg">
+                        <a href="https://wa.me/5511937507066" className="btn btn-primary btn-lg" onClick={() => trackWhatsAppClick('hero')}>
                             Agendar Consulta
                         </a>
                         <Link to="/sobre" className="btn btn-secondary btn-lg">

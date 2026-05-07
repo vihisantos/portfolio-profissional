@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { trackFormSubmit } from '../lib/analytics'
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -32,6 +33,7 @@ export default function ContactForm() {
         setStatus('success')
         setFormData({ name: '', contact: '' })
         setErrors({})
+        trackFormSubmit('contact', true)
 
         setTimeout(() => setStatus(null), 5000)
     }
